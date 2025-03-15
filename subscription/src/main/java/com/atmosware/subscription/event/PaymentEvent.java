@@ -1,16 +1,18 @@
 package com.atmosware.subscription.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class PaymentEvent {
-    private String userId;
-    private String status;  // SUCCESS veya FAILED
-    private double amount;
+    private Long id;
+    private String userEmail;  // SUCCESS veya FAILED
+    private String plan;
+
+    public PaymentEvent(Long id, String userEmail, String plan) {
+        this.id = id;
+        this.plan = plan;
+        this.userEmail = userEmail;
+    }
 }

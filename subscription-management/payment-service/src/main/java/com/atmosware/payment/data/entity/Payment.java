@@ -21,16 +21,14 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long subscriptionId;
-    private String userId;
     private String userEmail;
     private String status;
     private BigDecimal amount;
     private Date paymentDate;
 
-    public Payment(Long subscriptionId, String userEmail, String status, BigDecimal amount) {
-        this.subscriptionId = subscriptionId;
+    public Payment(String userEmail, Long subscriptionId, BigDecimal amount) {
         this.userEmail = userEmail;
-        this.status = status;
+        this.subscriptionId = subscriptionId;
         this.amount = amount;
     }
 

@@ -10,9 +10,8 @@ public class KafkaConfig {
     public NewTopic paymentRequestTopic() {
         return new NewTopic("payment_request", 1, (short) 1);
     }
-
-    @Bean
-    public NewTopic paymentSuccessTopic() {
-        return new NewTopic("payment_success", 1, (short) 1);
+    public NewTopic cancelSubscriptionTopic() {
+        return new NewTopic("subscription_cancellation", 1, (short) 1);
     }
+
 }

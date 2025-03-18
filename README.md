@@ -30,7 +30,7 @@ Eğer bir **ödeme başarısız olursa**, **`subscription-service` rollback işl
 ## **3️⃣ Örnek Transaction Senaryosu**
 
 ### **Başarılı İşlem Senaryosu**
-1️⃣ Kullanıcı abonelik başlatır. (`POST /subscriptions/create` çağrılır.)  
+1️⃣ Kullanıcı abonelik başlatır. (`POST /subscriptions` çağrılır.)  
 2️⃣ **Kafka'ya `payment_request` mesajı gönderilir.**  
 3️⃣ `payment-service`, **%70 ihtimalle başarılı ödeme yapar.**  
 4️⃣ **`payment_success` mesajı Kafka'ya gönderilir.**  
@@ -38,10 +38,41 @@ Eğer bir **ödeme başarısız olursa**, **`subscription-service` rollback işl
 6️⃣ `notification-service`, **kullanıcıya onay bildirimi yollar.**
 
 ### **Başarısız İşlem Senaryosu (Rollback)**
-1️⃣ Kullanıcı abonelik başlatır. (`POST /subscriptions/create` çağrılır.)  
+1️⃣ Kullanıcı abonelik başlatır. (`POST /subscriptions` çağrılır.)  
 2️⃣ **Kafka'ya `payment_request` mesajı gönderilir.**  
 3️⃣ `payment-service`, **%30 ihtimalle ödeme başarısız olur.**  
 4️⃣ **`payment_failed` mesajı Kafka'ya gönderilir.**  
 5️⃣ `subscription-service`, **aboneliği iptal eder ve `PASSIVE` duruma çeker.**  
 6️⃣ `notification-service`, **kullanıcıya "Ödeme başarısız" bildirimi yollar.**
 
+## **4️⃣ Sistem Mimarisi**
+![architecture](subscription-management/SubscriptionManagement.drawio.png)
+[Dosyayı buradan indirebilirsiniz](subscription-management/SubscriptionManagement.drawio)
+
+## **5️⃣Docker Deploymen Yönergeleri**
+
+- subscription-management dizinine girilir
+- Uygulamanın Testlerini de çalıştırmak istediğimizden aşağıdaki komutu çalıştırılır
+
+   `mvn clean package`
+
+- Docker image’lerini oluşturulut:
+
+   `docker-compose build`
+- Oluşan Docker image’lerini kontrol edilir
+
+   `docker images`
+
+      | REPOSITORY              | TAG     | IMAGE ID     | CREATED        | SIZE  |
+      |-------------------------|---------|-------------|-----------------|-------|
+      | subscription-service    | 
+      | payment-service         | 
+      | notification-service    | 
+
+- Tüm servisleri çalıştırılır
+
+   `docker-compose up -d` 
+
+- Tüm servisleri çalıştırılır
+
+   `docker-compose up -d` 

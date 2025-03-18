@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
+  <diagram id="microservices-architecture" name="Microservices Kafka Architecture">
+    <mxGraphModel dx="1674" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Subscription Service" style="rounded=1;whiteSpace=wrap;fillColor=#ADD8E6;strokeColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="670" y="50" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Payment Service" style="rounded=1;whiteSpace=wrap;fillColor=#ADD8E6;strokeColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="640" y="550" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Notification Service" style="rounded=1;whiteSpace=wrap;fillColor=#ADD8E6;strokeColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="270" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Kafka Broker" style="rounded=1;whiteSpace=wrap;fillColor=#D3D3D3;strokeColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="590" y="260" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="payment_request" style="entryX=0.607;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="payment_request" style="entryX=0.429;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="payment_success/payment_failed" parent="1" edge="1">
+          <mxGeometry x="-0.2973" y="90" relative="1" as="geometry">
+            <mxPoint x="650" y="545" as="sourcePoint" />
+            <mxPoint x="650" y="360" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="payment_success/payment_failed" style="entryX=0.922;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.879;exitY=0.02;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="5" target="2" edge="1">
+          <mxGeometry x="0.5923" y="-74" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="payment_success/payment_failed" parent="1" source="5" target="4" edge="1">
+          <mxGeometry x="-0.0588" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="subscription_cancellation" style="entryX=0.321;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.056;exitY=1.038;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="2" target="5" edge="1">
+          <mxGeometry x="-0.5133" y="-52" relative="1" as="geometry">
+            <mxPoint x="720" y="150" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="subscription_cancellation" style="exitX=0.843;exitY=1.01;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.89;entryY=-0.04;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5" target="3" edge="1">
+          <mxGeometry x="0.2882" y="84" relative="1" as="geometry">
+            <mxPoint x="810" y="360" as="sourcePoint" />
+            <mxPoint x="980" y="580" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ke5M28nNq9TRTosUaj26-12" value="Payment" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="542.5" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Ke5M28nNq9TRTosUaj26-13" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="3" target="Ke5M28nNq9TRTosUaj26-12" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="880" y="585" as="sourcePoint" />
+            <mxPoint x="930" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ke5M28nNq9TRTosUaj26-14" value="Subscription" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="460" y="40" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Ke5M28nNq9TRTosUaj26-18" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ke5M28nNq9TRTosUaj26-14" target="2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="150" as="sourcePoint" />
+            <mxPoint x="630" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

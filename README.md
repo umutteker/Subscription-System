@@ -73,6 +73,16 @@ Eğer bir **ödeme başarısız olursa**, **`subscription-service` rollback işl
 
    `docker-compose up -d` 
 
-- Tüm servisleri çalıştırılır
+-  Container’ların çalıştığını doğrulanır
 
-   `docker-compose up -d` 
+   `docker ps` 
+
+      | CONTAINER ID  | IMAGE                   | STATUS    | PORTS                      |
+      |--------------|--------------------------|-----------|----------------------------|
+      |  | subscription-service   | | |
+      |  | payment-service        | | |
+      |  | notification-service   | | |
+      |  | kafka                  | | |
+      |  | zookeeper              | | |
+
+-  Uygulama postman ile test edilebilir.

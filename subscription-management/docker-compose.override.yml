@@ -1,0 +1,7 @@
+services:
+  subscription-service:
+    command: ["mvn", "test"]
+  payment-service:
+    command: ["mvn", "test"]
+  notification-service:
+    command: ["mvn", "test"]

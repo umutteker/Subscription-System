@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class NotificationServiceImpl implements NotificationService {
 
     private final ObjectMapper objectMapper;
+
     @KafkaListener(topics = "payment_success", groupId = "notification-group")
     @Override
     public void sendPaymentSuccessNotification(String subscriptionJson) throws JsonProcessingException {
-
         Subscription subscription = objectMapper.readValue(subscriptionJson, Subscription.class);
         System.out.println("Sending Success notification: " + subscription.getId());
     }

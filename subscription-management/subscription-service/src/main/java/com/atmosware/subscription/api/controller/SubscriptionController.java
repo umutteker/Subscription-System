@@ -18,7 +18,7 @@ public class SubscriptionController {
 
     @PostMapping
     public ResponseEntity<String> createSubscription(@RequestBody SubscriptionRequest request) throws JsonProcessingException {
-        subscriptionService.createSubscription(request);
+        subscriptionService. createSubscription(request);
         return ResponseEntity.status(HttpStatus.OK).body("Aboneliğiniz oluşturuluyor");
     }
     @PutMapping("/cancel/{email}")

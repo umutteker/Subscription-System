@@ -19,6 +19,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
     private final PaymentRepository repository;
+    private final PaymentProcessor paymentProcessor; // Yeni bileşen
 
     @KafkaListener(topics = "payment_request", groupId = "payment-group")
     @Override
@@ -27,7 +28,7 @@ public class PaymentServiceImpl implements PaymentService {
         System.out.println("Processing payment: " + subscriptionJson);
         Subscription subscription = objectMapper.readValue(subscriptionJson, Subscription.class);
         Payment payment = new Payment(subscription.getUserEmail(), subscription.getId(), amount);
-        boolean success = Math.random() > 0.3; // %70 başarılı ödeme simülasyonu
+        boolean success = paymentProcessor.process(payment);
         System.out.println("Payment Status: " + success);
         if (success) {
             payment.setStatus("SUCCESS");

@@ -20,12 +20,10 @@ Eğer bir **ödeme başarısız olursa**, **`subscription-service` rollback işl
 ---
 
 ## **2️⃣ Kullanılan Kafka Konuları (Topics)**
-| **Topic** | **Producer** | **Consumer** | **Açıklama** |
-|-----------|-------------|-------------|-------------|
-| `payment_request` | `subscription-service` | `payment-service` | Ödeme başlatma talebi |
-| `payment_success` | `payment-service` | `subscription-service`, `notification-service` | Ödeme başarılı mesajı |
-| `payment_failed` | `payment-service` | `subscription-service`, `notification-service` | Ödeme başarısız mesajı |
-| `subscription_cancellation` | `subscription-service` | `payment-service` | Abonelik iptal bildirimi |
+- payment_request
+- payment_success
+- payment_failed
+- subscription_cancellation
 
 ---
 
@@ -47,10 +45,3 @@ Eğer bir **ödeme başarısız olursa**, **`subscription-service` rollback işl
 5️⃣ `subscription-service`, **aboneliği iptal eder ve `PASSIVE` duruma çeker.**  
 6️⃣ `notification-service`, **kullanıcıya "Ödeme başarısız" bildirimi yollar.**
 
----
-
-## **4️⃣ Sonuç & Özet**
-✅ **Mikroservisler bağımsız çalışır, birbirleriyle Kafka aracılığıyla haberleşir.**  
-✅ **Transaction süreci `payment_success` ve `payment_failed` mesajları ile yönetilir.**  
-✅ **Başarısız ödeme senaryolarında `subscription-service` rollback mekanizmasını çalıştırır.**  
-✅ **Bu model ile klasik monolitik ACID transaction yerine, event-driven ve dağıtık transaction yönetimi uygulanmış olur.**
